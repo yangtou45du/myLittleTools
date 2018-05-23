@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: cp936 -*-
 from time import  sleep
-from pytesseract import *
+from pytesser import *
 from selenium import webdriver
 from PIL import Image, ImageEnhance
+
 driver=webdriver.Firefox()
 driver.get("http://amstest4.phkjcredit.com/ams_web/")#打开网页
 driver.maximize_window()
+driver.find_element_by_xpath("//*[@id=\"loginFrom\"]/div[3]/div/i/img").click()
 driver.save_screenshot('verifyCode.png')#截取当前网页，该网页有我们需要的验证码
 sleep(2)
 #定位验证码
@@ -33,6 +35,11 @@ sharp_img = sharpness.enhance(2.0)
 sharp_img.save("newVerifyCode.png")
 newVerify = Image.open('newVerifyCode.png')
 # 使用image_to_string识别验证码
-text=image_to_string(newVerify).strip() #使用image_to_string识别验证码
+sleep(2)
+text=image_to_string(newVerify).strip() #使用image_to_string识别验证码需要将此文件放在pyesser.py的安装路径下
 #text1 = image_to_string('newVerifyCode.png').strip()
-print (text)
+print ("text:",text)
+
+
+
+
