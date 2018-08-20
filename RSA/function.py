@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: cp936 -*-
-
 import json
 import requests
-from common.data_processing import data_processing
-
-
+from data_processing import data_processing
 class function():
     def post(self,url,data):
         db=data_processing()
@@ -17,13 +14,13 @@ class function():
         result=db.decrypt(dict)       #Ω‚√‹
         print(result)
 
-
 #data={"params": "Ly+WfsOYZTosk8qQUHYyHIoDk4lpuHW8mTAsFtwNLJFZqio1ceZVtdbR3APsFsV2nVpqI+Bxa7qX\r\nR8ZAmzKDmtpdRkc4ZyDBCxtV8OUMMyXH0q/etILFdVHpXU6s3j8krleAjzlmY1rSiiQ9GL5jL/C1\r\nR2rsEcIKC7YdgqMh0S8=\r\n"}
-url = "http://yzjtest.uicredit.cn/yzj-inner-api/innerApi/payment/getOverdueOrderInfo"
-data={
-    "params":{
-           "orderId":"20180207101404206137254"
-     }
-}
-f=function()
-f.post(url,data)
+if __name__=='__main__':
+    url = "http://yzjtest.uicredit.cn/yzj-inner-api/innerApi/payment/getOverdueOrderInfo"
+    data={
+        "params":{
+               "orderId":"20180207101404206137254"
+         }
+    }
+    f=function()
+    f.post(url,data)

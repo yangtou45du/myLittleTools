@@ -6,13 +6,14 @@ from selenium import webdriver
 from PIL import Image, ImageEnhance
 
 driver=webdriver.Firefox()
-driver.get("http://amstest4.phkjcredit.com/ams_web/")#打开网页
+driver.get("http://221.236.20.224:809/wms_web/login.shtml")#打开网页
 driver.maximize_window()
-driver.find_element_by_xpath("//*[@id=\"loginFrom\"]/div[3]/div/i/img").click()
+sleep(5)
+#driver.find_element_by_xpath("//*[@id=\"loginFrom\"]/div[3]/div/i/img").click()
 driver.save_screenshot('verifyCode.png')#截取当前网页，该网页有我们需要的验证码
 sleep(2)
 #定位验证码
-imgelement = driver.find_element_by_xpath("//*[@id=\"loginFrom\"]/div[3]/div/i/img")
+imgelement = driver.find_element_by_id("checkCodeImg")
 #获取验证码x，y坐标
 location=imgelement.location
 print(location)

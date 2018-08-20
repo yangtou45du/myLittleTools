@@ -17,6 +17,7 @@ class data_processing():
         '''解密数据'''
         data1 = json.dumps(data).replace(' ', '').replace('\"', '\\\"')
         #print("decrypt:", self.__data_processing(2, data1).split('======>')[1])
+
         return self.__data_processing(2,data1).split('======>')[1]
     def __data_processing(self,mode,data):
         '''
